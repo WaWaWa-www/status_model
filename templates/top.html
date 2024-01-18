@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>自由課題</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='top.css') }}">
+</head>
+
+<body>
+	<main>
+		<div>
+			<label for="hp">HP（体力）:</label>
+			<span id="hp">100</span>
+		</div>
+	
+		<!-- MP（魔法力）の表示 -->
+		<div>
+			<label for="mp">MP（魔法力）:</label>
+			<span id="mp">50</span>
+		</div>
+		<button type="submit">ダメージ</button>
+		<button type="submit">回復</button>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャラクターのステータス</title>
+</head>
+<body>
+
+    <h1>キャラクターのステータス</h1>
+
+    <!-- HP（体力）の表示 -->
+    <div>
+        <label for="hp">HP（体力）:</label>
+        <span id="hp">{{ hp }}</span>
+    </div>
+
+    <!-- MP（マナ）の表示 -->
+    <div>
+        <label for="mp">MP（マナ）:</label>
+        <span id="mp">{{ mp }}</span>
+    </div>
+
+    <!-- ダメージボタン -->
+    <button onclick="applyDamage()">ダメージを受ける</button>
+
+    <!-- 回復ボタン -->
+    <button onclick="applyHealing()">回復する</button><br />
+
+
+    <button onclick="ManaConsumption()">マナ消費</button>
+
+    <!-- 回復ボタン -->
+    <button onclick="ManaHealing()">マナ回復</button>
+
+    <!-- スクリプト -->
+    <script>
+        // ダメージを受ける関数
+        function applyDamage() {
+            fetch('/apply_damage')
+                .then(response => response.text())
+                .then(hp => updateHp(hp));
+        }
+
+        // 回復する関数
+        function applyHealing() {
+            fetch('/apply_healing')
+                .then(response => response.text())
+                .then(hp => updateHp(hp));
+        }
+
+        //マナ消費関数
+        function ManaConsumption(){
+            fetch('/mana_consumption')
+                .then(response => response.text())
+                .then(mp => updateMp(mp));
+        }
+
+        //マナ回復関数
+        function ManaHealing(){
+            fetch('/mana_healing')
+                .then(response => response.text())
+                .then(mp => updateMp(mp));
+        }
+
+        // HPを更新する関数
+        function updateHp(hp) {
+            document.getElementById("hp").innerText = hp;
+        }
+
+        // HPを更新する関数
+        function updateMp(mp) {
+            document.getElementById("mp").innerText = mp;
+        }
+
+    </script>
+
+</body>
+</html>
